@@ -1,0 +1,27 @@
+{% extends 'clientheritage.html.twig' %}
+{% block body %}
+        <div >
+        	<div id="header">
+        {{include ('view/headerT.html.twig') }}
+    </div>
+
+<section id="main-content">
+      <section class="wrapper">
+
+            <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page"> Liste des clients/ Conatcter client </li>
+  </ol>
+         
+   
+{%for message in app.flashes('message')%}
+<div class="alert alert-success" role="alert">
+{{message}}
+</div>
+{%endfor%}
+<div style="    margin: 50px;">
+{{form (contactForm , {'attr': {'novalidate': 'novalidate'}})}}
+</div>
+ </section>
+ </section>
+{% endblock %}

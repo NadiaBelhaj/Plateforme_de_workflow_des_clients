@@ -1,0 +1,112 @@
+{% extends 'Clientheritage.html.twig' %}
+
+{% block body %}
+
+<div id="">
+        {{include ('view/headerT.html.twig') }}
+    </div>
+
+    
+    <section id="main-content">
+      <section class="wrapper">
+
+<div>
+    {{ form_start(form) }}
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.Name) }}
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    {%for message in app.flashes('message')%}
+        <div class="alert alert-success" role="alert">
+            {{message}}
+        </div>
+    {%endfor%}
+</div>
+ 
+        <ul class="nav pull-right ">
+          <li><a class="btn btn-theme" href="{{ path('inscription') }}">Créer client </a></li>
+        </ul>
+      </div>
+                <h4><i class="fa fa-angle-right"></i> Liste des Clients </h4>
+              <section id="unseen">
+              </div>
+
+    <table class="table table-bordered table-striped table-condensed .col-md-1">
+        <thead>
+            <tr>
+                <th  class="numeric">Id</th>
+                <th  class="numeric">Raison sociale</th>
+                <th  class="numeric">Nom complet</th>
+                <th  class="numeric">Email</th>
+                <th  class="numeric">Etat</th>
+
+                
+
+            </tr>
+        </thead>
+        <tbody>
+        {% for user in users %}
+            <tr>
+               
+                
+                {% for role in user.roles %}
+                    {% if role =="ROLE_CLIENT" %}
+                      <td  class="numeric">{{ user.id }}</td>
+                  <td  class="numeric">{{ user.companyName }}</td>
+                    <td  class="numeric">{{ user.responsableName}}</td>
+
+                <td  class="numeric">{{ user.email }}</td>
+                
+                <td>
+             
+              {% if user.enabled > 0%}
+                 active
+              {% elseif user.enabled == false %}
+               Bloquer
+              {% endif %} 
+                
+                </td>
+     
+               
+                 <td>
+              
+                  <div class="btn-group">
+                <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+                  Action <span class="caret"></span>
+                  </button>
+                <ul class="dropdown-menu" role="menu">
+<li><a href="{{ path('profil',{'id':user.id} ) }}">Details</a></li>
+                  <li><a href="{{ path('edit_user',{'id':user.id} ) }}">Modifier</a></li>
+                    <li><a  href="{{ path('conatctAd', {'id': user.id}) }}">Contacter</a></li>
+                    <li>{{ include('admin/bloquser.html.twig') }}</li>
+                    <li>  {{ include('admin/delete.html.twig') }}</li>
+
+                </ul>
+              </div>
+                          
+ 
+                 </td>
+                  {% endif %}
+                {% endfor %}
+                    </tr>
+                    </tr>
+
+        {% else  %}
+            <tr>
+                <p class="numeric"td colspan="5">il ny'a pas d'utilisateurs  inscrit</p> </td>
+            </tr>
+
+        {% endfor %}
+        </tbody>
+    </table>
+ 
+</section>
+</section>
+{% endblock %}

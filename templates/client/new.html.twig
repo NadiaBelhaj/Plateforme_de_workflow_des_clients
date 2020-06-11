@@ -1,0 +1,14 @@
+
+{% extends 'clientheritage.html.twig' %}
+{% block title %}New Client{% endblock %}
+
+{% block body %}
+ {{include ('view/headerT.html.twig') }}
+   <section id="main-content">
+      <section class="wrapper">
+     <h4>Liste des clients<i class="fa fa-angle-right"></i>Ajouter Client</h4>
+
+    {{ include('client/_form.html.twig') }}
+
+   
+{% endblock %}

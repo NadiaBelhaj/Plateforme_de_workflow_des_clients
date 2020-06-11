@@ -1,0 +1,118 @@
+
+{% extends 'clientheritage.html.twig' %}
+
+{%block title%}
+B2B plateforme
+
+{% endblock %}
+{% block body %}
+<div id="header">
+        {{include ('view/headerT.html.twig') }}
+    </div>
+
+
+<section id="main-content">
+      <section class="wrapper">
+    
+{{ form_start(form) }}
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.Name) }}
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    
+
+<div>
+      
+        </ul>
+      </div>
+ 
+
+    <div class="row mt">
+   
+              <section id="unseen">
+
+            <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">Liste des Clients bloqués </li>
+  </ol>
+          
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+       
+                <th class="numeric">ID</th>
+                <th class="numeric">Type</th>
+                <th class="numeric">Raison Sociale</th>
+                <th class="numeric">Nom complet</th>
+                <th class="numeric">Grade du responsable</th>
+                <th class="numeric">Email</th>
+                <th class="numeric">Telephone</th>
+                 <th class="numeric">Adresse</th>
+                                 <th class="numeric">Etat</th>
+
+
+
+                
+               
+                
+                <th class="numeric">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+        {% if client.etat ==false%}
+            <tr>
+                <td class="numeric">{{ client.utilisateur.id}}</td>
+
+                <td class="numeric">{{ client.type }}</td>
+                <td class="numeric">{{ client.company }}</td>
+                <td class="numeric">{{ client.contactName }}</td>
+                <td class="numeric">{{ client.contactPosition }}</td>
+                <td class="numeric">{{ client.mail }}</td>
+                <td class="numeric">{{ client.phone }}</td>
+                <td class="numeric">{{ client.adresse }}</td>
+<td>
+
+                              
+                                
+                                  {% if client.etat> 0%}
+                                    active
+                                {% elseif client.etat== false %}
+                                    non-active
+                                {% endif %}
+
+
+                            </td>
+
+               
+<td>
+
+                 
+                   {{include('client/debloquer.html.twig') }}
+
+                  </ul>
+              </div>
+                 </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+
+                                {% endif %}
+
+        {% endfor %}
+          
+        </tbody>
+    </table>
+  
+     </section>
+      </section>
+{% endblock %}

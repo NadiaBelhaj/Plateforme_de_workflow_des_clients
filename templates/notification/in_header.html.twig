@@ -1,0 +1,27 @@
+<li id="header_notification_bar" class="dropdown">
+    <a data-toggle="dropdown" class="dropdown-toggle" href="index.html#">
+        {% if nbNotifNonLus  > 0 %}
+            <i class="fa fa-bell-o"></i>
+            <span class="badge bg-warning">{{ nbNotifNonLus }}</span>
+        {% endif %}
+    </a>
+    <ul class="dropdown-menu extended notification">
+        <div class="notify-arrow notify-arrow-yellow"></div>
+        <li>
+            {% if nbNotifNonLus  > 0 %}
+                <p class="yellow">Vous avez {{ nbNotifNonLus }}   notifications</p>
+             {% else %}
+                <p class="yellow">Acune nouvelle notification</p>
+            {% endif %}
+        </li>
+        {% for notif in derniersNotifs %}
+        <li {% if notif.vu == false %} class="non-vue"{% endif %}>
+            <a href="{{ path('notification_voir', {'id': notif.id}) }}">
+                <span class="label label-danger"><i class="fa fa-bolt"></i></span>
+                Une nouvelle commande par {{ notif.commande.societe }}
+                <span class="small italic">{{ notif.dateCreation|date('d-m-Y à H:i') }}</span>
+            </a>
+        </li>
+        {% endfor %}
+        
+</li>

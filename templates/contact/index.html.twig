@@ -1,0 +1,56 @@
+{% extends 'clientheritage.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+<body>
+        {{include ('view/headerC.html.twig') }}
+   
+
+        <section id="">
+      <section class="">
+         <section id="unseen">
+ 
+
+ <div class="row">
+                <div class="col-lg-6 offset-lg-3">
+ <!-- Contact -->
+     <div id="features" style= "
+    margin-top: 100px;
+">
+    <div id="contact" class="form">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <h2>CONTACT</h2>
+                    <ul class="list-unstyled li-space-lg">
+                        <li class="address">N'hesitez pas de contacter notre Responsable technique</li>
+                        <li><i class="fas fa-map-marker-alt"></i> dans toute la tunisie </li>
+                        <li><i class="fas fa-phone"></i><a class="blue" href="tel:003024630820">+216 29530222</a></li>
+                        <li><i class="fas fa-envelope"></i><a class="blue" href="mailto:office@leno.com">sales .trustit.tn</a></li>
+                    </ul>
+                </div> <!-- end of col -->
+            </div> <!-- end of row -->
+          
+{%for message in app.flashes('message')%}
+<div class="alert alert-success" role="alert">
+{{message}}
+</div>
+{%endfor%}
+
+<div class="form-group"></div>
+{{form (contactForm , {'attr': {'novalidate': 'novalidate'}})}}
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</body>
+</div>
+{{include ('view/footerContact.html.twig') }}
+
+
+{% endblock %}

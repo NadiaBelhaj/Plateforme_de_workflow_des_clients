@@ -1,0 +1,24 @@
+{% extends 'Clientheritage.html.twig' %}
+
+{% block body %}
+
+<div id="">
+        {{include ('view/affiche.html.twig') }}
+    </div>
+</div>
+    
+    <section id="main-content">
+      <section class="wrapper">
+ <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page"> Liste  intervenants/Modifier intervenants </li>
+  </ol>
+    <h1></h1>
+    <div style=" margin: 100px;">
+{{ form (userform , {'attr': {'novalidate': 'novalidate'}}) }}
+
+ <button class="btn"  type="submit" onclick="window.location.href='{{ path('utilisateurs') }}'">Annuler</button>
+ </div>
+</section>
+</section>
+{% endblock %}

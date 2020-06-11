@@ -1,0 +1,47 @@
+{% extends 'clientheritage.html.twig' %}
+{% block body %}
+<div id="header">
+    {{include ('view/affiche.html.twig') }}
+</div>
+ {{ render(controller('App\\Controller\\dasbordController::sommenrepatarteur')) }}
+ <div id="div_piechart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_language('fr') }}
+
+        {{ gc_draw(piechart, 'div_piechart') }}
+    </script>
+      
+    
+    <div id="div_chart"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_language('fr') }}
+
+        {{ gc_draw(chart, 'div_chart') }}
+        
+    </script>
+
+    <div class=" col-md-6 col-md-1" style="margin-left: 500px;">
+     <div class=""style="">
+        <div class="container">
+            <div class="row"style="
+    margin-right:px;
+    margin-top: -600px;">
+                <div class="col-lg-12">
+                    <!-- Counter -->
+                    <div id="counter">
+                         <div class="cell">
+     <div id="div_chartRep"></div>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+        {{ gc_language('fr') }}
+
+        {{ gc_draw(chartRep, 'div_chartRep') }}
+        
+    </script>
+</div>
+</div>
+</div>
+</div>
+{%endblock%}

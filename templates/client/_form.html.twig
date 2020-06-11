@@ -1,0 +1,7 @@
+ <div style=" margin: 100px;">
+{{ form_start(form) }}
+    {{ form_widget(form) }}
+    <button class="btn btn-primary btn-l">{{ button_label|default('enregistrer') }}</button>
+     <a class="btn btn-primary btn-l"  href="{{ path('client_index') }}">Annuler</a>
+{{ form_end(form , {'attr': {'novalidate': 'novalidate'}}) }}
+</div>

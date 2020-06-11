@@ -1,0 +1,55 @@
+
+{% extends 'clientheritage.html.twig' %}
+
+
+
+{% block body %}
+     <div >
+        {{include ('view/headerT.html.twig') }}
+    </div>
+</div>
+<section id="main-content">
+      <section class="wrapper">
+     <h4>Liste des clients<i class="fa fa-angle-right"></i>Fiche du Client</h4>   
+    
+</div>
+
+
+    <table class="table table-striped table-condensed .col-md-1 " style="
+    margin: 20px;">
+    <section id="unseen">
+
+        <tbody>
+            <tr>
+                <th class="numeric">Id</th>
+                <td class="numeric">{{ client.id }}</td>
+            </tr>
+            <tr>
+                <th class="numeric">Raison sociale</th>
+                <td class="numeric">{{ client.company }}</td>
+            </tr>
+            <tr>
+                <th class="numeric">Nom complet</th>
+                <td class="numeric">{{ client.contactName }}</td>
+            </tr>
+            <tr>
+                <th class="numeric">Grade du responsable</th>
+                <td class="numeric">{{ client.contactPosition }}</td>
+            </tr>
+            <tr>
+                <th class="numeric">Email</th>
+                <td class="numeric">{{ client.mail }}</td>
+            </tr>
+            <tr>
+                <th class="numeric">Adresse</th>
+                <td class="numeric">{{ client.adresse }}</td>
+          
+        </tbody>
+    </table>
+
+    <a  class="btn btn-primary btn-l"  href="{{ path('client_index') }}">Retour</a>
+
+    
+  </section>
+</section>
+{% endblock %}

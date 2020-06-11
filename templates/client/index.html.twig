@@ -1,0 +1,132 @@
+{% extends 'clientheritage.html.twig' %}
+
+{%block title%}
+B2B plateforme
+
+{% endblock %}
+{% block body %}
+<div id="header">
+        {{include ('view/headerT.html.twig') }}
+    </div>
+
+
+<section id="main-content">
+      <section class="wrapper">
+     <div style="margin:30px;">
+{{ form_start(form) }}
+    <div class="form-row align-items-end" >
+        <div class="col">
+            {{ form_row(form.Name) }}
+        </div>
+        <div class="col">
+            <div class="form-group">
+                <button type="submit" class="btn btn-success">Rechercher</button>
+            </div>
+        </div>
+    </div>
+    {{ form_end(form) }}
+    </div>
+    {%for message in app.flashes('message')%}
+<div class="alert alert-success" role="alert">
+{{message}}
+</div>
+{%endfor%}
+<div>
+
+
+<div>
+          <ul class="nav pull-right ">
+          <li><a class="btn btn-theme " href="{{ path('client_new') }}">Ajouter  client</a></li>
+
+        </ul>
+      </div>
+ 
+
+    <div class="row mt">
+   
+            <nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item active" aria-current="page">LISTE CLIENTS</li>
+  </ol>
+</nav>
+                <table class="table table-bordered table-striped table-condensed">
+                  <thead>
+                    <tr>
+       
+                <th class="numeric">ID</th>
+                <th class="numeric">Type</th>
+                <th class="numeric">Raison Sociale</th>
+                <th class="numeric">Nom complet</th>
+                <th class="numeric">Grade du responsable</th>
+                <th class="numeric">Email</th>
+                <th class="numeric">Telephone</th>
+                 <th class="numeric">Adresse</th>
+                                 <th class="numeric">Etat</th>
+
+
+
+                
+               
+                
+                <th class="numeric">Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for client in clients %}
+        {% if client.etat> 0%}
+            <tr>
+                <td class="numeric">{{ client.utilisateur.id}}</td>
+
+                <td class="numeric">{{ client.type }}</td>
+                <td class="numeric">{{ client.company }}</td>
+                <td class="numeric">{{ client.contactName }}</td>
+                <td class="numeric">{{ client.contactPosition }}</td>
+                <td class="numeric">{{ client.mail }}</td>
+                <td class="numeric">{{ client.phone }}</td>
+                <td class="numeric">{{ client.adresse }}</td>
+<td>
+
+                              
+                                
+                                  {% if client.etat> 0%}
+                                    active
+                                {% elseif client.etat== false %}
+                                    non-active
+                                {% endif %}
+
+
+                            </td>
+
+               
+<td>
+
+                 <div class="btn-group">
+                <button type="button" class="btn btn-theme dropdown-toggle" data-toggle="dropdown">
+                  Action <span class="caret"></span>
+                  </button>
+                <ul class="dropdown-menu" role="menu">
+                  <li><a btn btn-info href= "{{ path('client_show', {'id': client.id}) }}">Détails</a></li>
+                  <li><a btn btn-info href="{{ path('client_edit', {'id': client.id}) }}">Modifier</a></li>
+                   <li><a btn btn-info href="{{ path ('contactC',{'id':client.id}) }}">Contacter</a></li>
+                 
+                  <li> {{include('client/bloquer.html.twig') }}</li>
+
+                  </ul>
+              </div>
+                 </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="8">no records found</td>
+            </tr>
+
+                                {% endif %}
+
+        {% endfor %}
+
+        </tbody>
+    </table>
+    <h5 class="nav pull-right "> <a href="{{ path('bloquer_client_index') }}">clients Bloqués</a></h5>
+     </section>
+      </section>
+{% endblock %}

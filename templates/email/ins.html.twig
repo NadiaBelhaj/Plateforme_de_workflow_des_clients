@@ -1,0 +1,14 @@
+{% block body %}
+   <h4>bonjour Monsieu/Madame  {{ responsable }}!</h4>
+    ===========================
+<p>
+  Maitenant vous étes un client chez TRUSTIT voici votre email:
+    `{{email }}`et mot de passe: '{{password}}'
+    pour se connecter sur notre plateform  TRUSTIT for B2B
+
+
+<p>ET pour activer son compte , veuillez cliquer sur le lien ci-dessous pour l'activer</p>
+<a href="{{ absolute_url(path('activation', {'token': token})) }}">Activer un compte</a>
+</p>
+    
+{% endblock %}

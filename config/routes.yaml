@@ -1,0 +1,19 @@
+index:
+    path: /
+    controller: App\Controller\DefaultController::index
+
+calendrier:
+    path: /calendrier
+    controller: App\Controller\calendrierController::index
+
+prospect:
+        path: /prospect
+        controller: App\Controller\prospectController::affiche
+
+registration:
+        path: /register
+        controller: App\Controller\RegistrationController::register
+        methods : POST|GET
+
+        
+
